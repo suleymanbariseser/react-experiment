@@ -1,35 +1,28 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { variant, useVariant } from 'react-experiment';
 
-function App() {
-  const [count, setCount] = useState(0)
+const testVariant = variant('test');
+
+const App = () => {
+  const [value, setValue] = useVariant(testVariant);
 
   return (
-    <div className="App">
+    <div>
       <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+        Set variant =
+        <div>
+          <button onClick={() => setValue('A')}>A</button>
+          <button onClick={() => setValue('B')}>B</button>
+        </div>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      {value === 'A' ? (
+        <div>This is variant A</div>
+      ) : value === 'B' ? (
+        <div>This is variant B</div>
+      ) : (
+        <div>There is no variant setted</div>
+      )}
     </div>
-  )
-}
+  );
+};
 
 export default App
