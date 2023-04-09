@@ -1,4 +1,4 @@
-import { variant, useVariant } from 'react-experiment';
+import { variant, useVariant, Experiment, Variant } from 'react-experiment';
 
 const testVariant = variant('test');
 
@@ -14,15 +14,16 @@ const App = () => {
           <button onClick={() => setValue('B')}>B</button>
         </div>
       </div>
-      {value === 'A' ? (
-        <div>This is variant A</div>
-      ) : value === 'B' ? (
-        <div>This is variant B</div>
-      ) : (
-        <div>There is no variant setted</div>
-      )}
+      <Experiment variant={testVariant} defaultValue="A">
+        <Variant name="A">
+          <div>This is variant A</div>
+        </Variant>
+        <Variant name="B">
+          <div>This is variant B</div>
+        </Variant>
+      </Experiment>
     </div>
   );
 };
 
-export default App
+export default App;
