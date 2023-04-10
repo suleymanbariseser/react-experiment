@@ -11,13 +11,14 @@ const Box: React.FC<React.PropsWithChildren> = ({ children }) => {
       style={{
         border: '1px solid #000',
         padding: '10px',
-        marginBottom: '10px'
+        marginBottom: '10px',
       }}
     >
       {children}
     </div>
   );
 };
+
 const App = () => {
   const [likeVariant, setLikeVariantValue] = useVariant('like');
   const [testVariant, setTestVariantValue] = useVariant('test');

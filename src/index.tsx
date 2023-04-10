@@ -96,8 +96,8 @@ export const Variant = ({ name, children }: VariantProps) => {
 
 const isVariant = (
   child: React.ReactNode
-): child is React.ReactElement<{name:string}> => {
-  const variantChild = child as React.ReactElement<{name:string}>;
+): child is React.ReactElement<{ name: string }> => {
+  const variantChild = child as React.ReactElement<{ name: string }>;
 
   if (
     'props' in variantChild &&
@@ -109,12 +109,16 @@ const isVariant = (
 
   return false;
 };
-interface ExperimentProps{
+interface ExperimentProps {
   name: string;
   children: React.ReactNode;
   defaultValue?: string;
 }
-export const Experiment = ({ name, children, defaultValue }: ExperimentProps) => {
+export const Experiment = ({
+  name,
+  children,
+  defaultValue,
+}: ExperimentProps) => {
   const [value] = useVariant(name);
 
   const activeValue = value ?? defaultValue;
