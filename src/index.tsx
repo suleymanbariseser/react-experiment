@@ -85,6 +85,12 @@ export const useVariant = (
   ];
 };
 
+export const useSetVariant = (name: string) => {
+  const $exp = useExperiment();
+
+  return $exp.current!.set(name);
+};
+
 interface VariantProps {
   name: string;
   children: React.ReactNode;
@@ -136,6 +142,4 @@ export const Experiment = ({
   });
 
   return <>{activeChild}</>;
-
-  return <>{children}</>;
 };

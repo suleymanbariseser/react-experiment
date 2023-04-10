@@ -2,7 +2,7 @@ import {
   Experiment,
   ExperimentProvider,
   Variant,
-  useVariant,
+  useSetVariant,
 } from 'react-experiment';
 
 const Box: React.FC<React.PropsWithChildren> = ({ children }) => {
@@ -20,7 +20,7 @@ const Box: React.FC<React.PropsWithChildren> = ({ children }) => {
 };
 
 const LikeVariant = () => {
-  const [value, setValue] = useVariant('like');
+  const setValue = useSetVariant('like');
 
   return (
     <Box>
@@ -39,7 +39,7 @@ const LikeVariant = () => {
 };
 
 const TestVariant = () => {
-  const [value, setValue] = useVariant('test');
+  const setValue = useSetVariant('test');
 
   return (
     <Box>
